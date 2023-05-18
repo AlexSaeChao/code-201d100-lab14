@@ -1,6 +1,6 @@
 'use strict';
 
-
+// global varibles
 let votingRounds = 25;
 let productIndexArray = [];
 

@@ -1,1 +1,20 @@
 /* TODO: Make it awesome */
+body {
+
+}
+
+body header nav {
+
+}
+
+section {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+
+section img{
+  height: 20vw;
+}
