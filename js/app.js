@@ -1,9 +1,9 @@
 'use strict';
-
+//global variables
 function AppState() {
   this.allProducts = [];
 }
-
+//excutable code
 AppState.prototype.instantiateProducts = function () {
 
   const productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'water-can', 'wine-glass'];
@@ -17,20 +17,25 @@ AppState.prototype.instantiateProducts = function () {
   }
 
 }
-
+// save to local storage
 AppState.prototype.saveToLocalStorage = function () {
-  // TODO: Fill in this instance method to save product data to local storage
+  // DONE: Fill in this instance method to save product data to local storage
+  const productJSON = JSON.stringify(this.allProducts);
+  localStorage.setItem('products', productJSON);
 }
-
+// recieve from local storage 
 AppState.prototype.loadItems = function () {
 
-  // TODO: Update this instance method to retrieve data from local storage instead of creating new Products on each page load
-
-  this.instantiateProducts();
-
+  // DONE: Update this instance method to retrieve data from local storage instead of creating new Products on each page load
+  const productJSON = localStorage.getItem('products');
+  if (productJSON) {
+    this.allProducts = JSON.parse(productJSON);
+  } else {
+    this.instantiateProducts();
+  }
 }
 
-
+// constructor function
 function Product(name, fileExtension = 'jpg') {
   this.name = name;
   this.source = `assets/${name}.${fileExtension}`;
