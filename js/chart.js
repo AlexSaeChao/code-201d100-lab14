@@ -17,7 +17,7 @@ function renderChart() {
   let labels = [];
   let voteData = [];
   let viewData = [];
-  
+
   for (let i = 0; i < appState.allProducts.length; i++) {
     let product = appState.allProducts[i];
     labels.push(product.name);
@@ -29,13 +29,18 @@ function renderChart() {
     datasets: [
       {
         label: 'Vote Data',
+
         data: voteData,
-        borderWidth: 1
+        borderWidth: 2,
+        backgroundColor: 'green',
+        borderColor: 'black',
       },
       {
         label: 'View Data',
         data: viewData,
-        borderWidth: 1
+        borderWidth: 2,
+        backgroundColor: 'black',
+        borderColor: 'green',
       }
     ]
   };
@@ -43,7 +48,30 @@ function renderChart() {
     type: 'bar',
     data: dataObject,
     options: {
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            color: 'lightgray'
+          }
+        }
+      }, 
+      
+      scales: {
+        y: {
+          ticks: {
+            color: 'lightgray',
+          }
 
+
+        },
+        x: {
+          beginAtZero: true,
+          ticks: {
+            color: 'lightgray',
+          }
+        },
+      }
     }
   };
   new Chart(canvasElem, config);
